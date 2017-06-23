@@ -1,2 +1,15 @@
+#!/bin/bash
+
+function usage() {
+	echo "$0 Extract shell code from a given file"
+	echo "Usage: $0 FILE"
+	echo ""
+	echo "DESCRIPTION"
+	echo -e "\t FILE Object or Binary File"
+
+	exit
+}
+
+if [ $# -lt 1 ]; then usage; fi
 
 for i in $(objdump -d $1 -M intel |grep "^ " |cut -f2); do echo -n '\x'$i; done;echo
