@@ -2,3 +2,5 @@ Description of files in this project:
 
 tools/xshell - Extract a shellcode from a binary or object file
 	Eg: ./xshell mycode.o
+
+tools/rri-encoder.py - Reverse Random Insertion Encoder
