@@ -12,4 +12,9 @@ function usage() {
 
 if [ $# -lt 1 ]; then usage; fi
 
-for i in $(objdump -d $1 -M intel |grep "^ " |cut -f2); do echo -n '\x'$i; done;echo
+echo -e "\nYour Shellcode:"
+#for i in $(objdump -d $1 -M intel |grep "^ " |cut -f2); do echo -n '\x'$i; done;echo
+for i in $(objdump -d $1 -M intel |grep "^ " |cut -f2); do SC=$SC'\x'$i; done;echo "$SC"
+
+echo -e "\nShellcode Size: " $(echo $SC | grep -o '\\x' | wc -l)
+
